@@ -1,0 +1,91 @@
+{
+  "name": "regex-paste",
+  "displayName": "Regex Paste",
+  "description": "Modifies pasted text based on regex patterns",
+  "version": "0.0.4",
+  "engines": {
+      "vscode": "^1.75.0"
+  },
+  "categories": [
+      "Other"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+      "commands": [
+          {
+              "command": "extension.regexPaste",
+              "title": "Regex Paste"
+          }
+      ],
+      "keybindings": [
+          {
+              "command": "extension.regexPaste",
+              "key": "ctrl+shift+v",
+              "mac": "cmd+alt+v"
+          }
+      ],
+      "configuration": {
+          "title": "Regex Paste",
+          "properties": {
+              "regexPaste.rules": {
+                  "type": "array",
+                  "default": [
+                    {
+                      "pattern": "#?([^'\"#$=0-9]+?_)[1-9][0-9]*(_[^'\"\\s]+)",
+                      "replacement": "[id^=$1][id$=$2]"
+                    },
+                    {
+                      "pattern": "(^| )(locator|getByRole|getByLabel|getByPlaceholder|getByText|getByAltText|getByTitle|getByTestId)",
+                      "replacement": "page.$2"
+                    },
+                    {
+                      "pattern": "(^| )page\\.",
+                      "replacement": "$1this.page.",
+                      "condition": {
+                        "pattern": "this\\.page\\s*=\\s*page",
+                        "scope": "file"
+                      }
+                    }
+                  ],
+                  "items": {
+                      "type": "object",
+                      "properties": {
+                          "pattern": {
+                              "type": "string",
+                              "description": "The regex pattern to match"
+                          },
+                          "replacement": {
+                              "type": "string",
+                              "description": "The replacement string"
+                          },
+                          "condition": {
+                              "type": "object",
+                              "properties": {
+                                  "pattern": {
+                                      "type": "string",
+                                      "description": "The condition regex pattern"
+                                  },
+                                  "scope": {
+                                      "type": "string",
+                                      "enum": ["file", "line"],
+                                      "description": "The scope of the condition check"
+                                  }
+                              }
+                          }
+                      },
+                      "required": ["pattern", "replacement"]
+                  },
+                  "description": "Array of regex rules for text replacement"
+              }
+          }
+      }
+  },
+  "scripts": {
+      "vscode:prepublish": "npm run lint",
+      "lint": "eslint ."
+  },
+  "devDependencies": {
+      "@types/vscode": "^1.60.0",
+      "eslint": "^7.32.0"
+  }
+}
