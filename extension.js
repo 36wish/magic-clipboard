@@ -19,7 +19,14 @@ function activate(context) {
                 }
 
                 const regex = new RegExp(rule.pattern, 'g');
-                modifiedText = modifiedText.replace(regex, rule.replacement);
+                if (rule.match){
+                    const match = modifiedText.match(regex);
+                    if (match){
+                        modifiedText = match.join()
+                    }
+                }else{
+                    modifiedText = modifiedText.replace(regex, rule.replacement);
+                }
             }
 
             // Insert the modified text
