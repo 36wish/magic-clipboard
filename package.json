@@ -3,6 +3,7 @@
     "displayName": "Magic Clipboard: Regex replace and paste",
     "description": "Modifies pasted text based on regex patterns",
     "version": "0.0.4",
+    "icon": "icon.png",
     "engines": {
         "vscode": "^1.75.0"
     },
