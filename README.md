@@ -44,7 +44,7 @@ Example: `page.click('.button')` → `this.page.click('.button')`
 Configure the regex rules in your VSCode settings (settings.json):
 
 ```json
-"regexPaste.rules": [
+"magicClipboard.rules": [
     {
         "pattern": " page\\.",
         "replacement": " this.page.",
@@ -63,13 +63,4 @@ Each rule can have:
   - `pattern`: A regex pattern to check in the existing file or line.
   - `scope`: Either "file" or "line", determining where to check the condition.
 
-
-## Development
-
-This extension is written in JavaScript. To set up the development environment:
-
-1. Clone the repository
-2. Run `npm install` to install dependencies
-3. Open the project in VSCode
-4. Press F5 to run the extension in debug mode
 
