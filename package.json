@@ -1,6 +1,6 @@
 {
-    "name": "regex-paste",
-    "displayName": "Regex Paste",
+    "name": "magic-clipboard",
+    "displayName": "Magic Clipboard: Regex replace and paste",
     "description": "Modifies pasted text based on regex patterns",
     "version": "0.0.4",
     "engines": {
@@ -14,21 +14,21 @@
     "contributes": {
         "commands": [
             {
-                "command": "extension.regexPaste",
-                "title": "Regex Paste"
+                "command": "extension.magicClipboard",
+                "title": "Magic Clipboard: Regex paste"
             }
         ],
         "keybindings": [
             {
-                "command": "extension.regexPaste",
+                "command": "extension.magicClipboard",
                 "key": "ctrl+shift+v",
                 "mac": "cmd+alt+v"
             }
         ],
         "configuration": {
-            "title": "Regex Paste",
+            "title": "Magic Clipboard",
             "properties": {
-                "regexPaste.rules": {
+                "magicClipboard.rules": {
                     "type": "array",
                     "default": [
                         {
