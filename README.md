@@ -4,14 +4,14 @@ This VSCode extension modifies pasted text based on predefined regex patterns an
 
 ## Features
 
-- Automatically applies regex patterns to text when pasting with Ctrl+Shift+V (Cmd+Shift+V on Mac).
+- Automatically applies regex patterns to text when pasting with Ctrl+Shift+V (Ctrl+V on Mac).
 - Customizable regex patterns, replacements, and conditions.
 - Condition checking for both file and line scopes.
 
 ## Usage
 
 1. Copy text to your clipboard.
-2. In VSCode, use Ctrl+Shift+V (or Cmd+Shift+V on Mac) to paste. The extension will automatically modify the text based on your configured rules.
+2. In VSCode, use Ctrl+Shift+V (or Ctrl+V on Mac) to paste. The extension will automatically modify the text based on your configured rules.
 
 ## Default rules
 

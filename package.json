@@ -28,7 +28,7 @@
             {
                 "command": "extension.magicClipboard",
                 "key": "ctrl+shift+v",
-                "mac": "cmd+alt+v"
+                "mac": "ctrl+v"
             }
         ],
         "configuration": {

@@ -4,8 +4,8 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-    let disposable = vscode.commands.registerTextEditorCommand('extension.regexPaste', async (textEditor, edit) => {
-        const config = vscode.workspace.getConfiguration('regexPaste');
+    let disposable = vscode.commands.registerTextEditorCommand('extension.magicClipboard', async (textEditor, edit) => {
+        const config = vscode.workspace.getConfiguration('magicClipboard');
         const rules = config.get('rules') || [];
 
         const clipboard = await vscode.env.clipboard.readText();
