@@ -1,11 +1,13 @@
 const vscode = require('vscode');
-
+let magicClipboardDebug = vscode.window.createOutputChannel("Magic Clipboard");
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
     let disposable = vscode.commands.registerTextEditorCommand('extension.magicClipboard', async (textEditor, edit) => {
         const config = vscode.workspace.getConfiguration('magicClipboard');
+        if (config.debug)
+            magicClipboardDebug.show();
         const rules = config.get('rules') || [];
 
         const clipboard = await vscode.env.clipboard.readText();
@@ -19,13 +21,18 @@ function activate(context) {
                 }
 
                 const regex = new RegExp(rule.pattern, 'g');
+                magicClipboardDebug.appendLine(`rule: ${regex}`);
                 if (rule.match){
-                    const match = modifiedText.match(regex);
+                    const match = regex.exec(modifiedText);
                     if (match){
-                        modifiedText = match.join()
+                        modifiedText = rule.replacement.replace('$1', match[1]);
                     }
+                    magicClipboardDebug.appendLine(`match: ${match?.[0]}`);
+                    magicClipboardDebug.appendLine(`modifiedText: ${modifiedText}`);
                 }else{
                     modifiedText = modifiedText.replace(regex, rule.replacement);
+                    magicClipboardDebug.appendLine(`modifiedText: ${modifiedText}`);
+
                 }
             }
 
