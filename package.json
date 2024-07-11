@@ -47,7 +47,7 @@
                             "replacement": "[id^=$1][id$=$2]"
                         },
                         {
-                            "pattern": "(\\[id\\^=.*]\\[id\\$=.*])",
+                            "pattern": "(?<!locator.*)(\\[id\\^=.*]\\[id\\$=.*])",
                             "replacement": "locator('$1')",
                             "condition": {
                                 "pattern": "^(?!.*locator).*$",
