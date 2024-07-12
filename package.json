@@ -38,8 +38,8 @@
                     "type": "array",
                     "default": [
                         {
-                            "pattern": "\\sid=[\"']([^\"']+)[\"']",
-                            "replacement": "$1",
+                            "pattern": "(^|\\s)id=[\"']([^\"']+)[\"']",
+                            "replacement": "$2",
                             "match": true
                         },
                         {

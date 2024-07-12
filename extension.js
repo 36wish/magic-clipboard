@@ -25,7 +25,7 @@ function activate(context) {
                 if (rule.match){
                     const match = regex.exec(modifiedText);
                     if (match){
-                        modifiedText = rule.replacement.replace('$1', match[1]);
+                        modifiedText = rule.replacement.replace('$1', match[1]).replace('$2', match[2]).replace('$3', match[3]).replace('$4', match[4]).replace('$5', match[5]).replace('$6', match[6]).replace('$7', match[7]).replace('$8', match[8]).replace('$9', match[9]);
                     }
                     magicClipboardDebug.appendLine(`match: ${match?.[0]}`);
                     magicClipboardDebug.appendLine(`modifiedText: ${modifiedText}`);
