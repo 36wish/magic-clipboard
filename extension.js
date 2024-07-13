@@ -36,24 +36,7 @@ function activate(context) {
                 }
             }
 
-            // Get the indentation of the current line
-            const currentLine = textEditor.document.lineAt(textEditor.selection.active.line);
-            const currentIndent = currentLine.text.match(/^\s*/)[0];
-
-            // Split the modified text into lines and adjust indentation
-            const lines = modifiedText.split('\n');
-            const indentedLines = lines.map((line, index) => {
-                if (index === 0) {
-                    // First line should use the current cursor position's indentation
-                    return line.trimLeft();
-                } else {
-                    // Subsequent lines should have the indentation added
-                    return currentIndent + line.trimLeft();
-                }
-            });
-
-            // Join the lines back together
-            const indentedText = indentedLines.join('\n');
+            const indentedText = adjustIndentation(textEditor, modifiedText);
 
             // Insert the modified and indented text
             textEditor.edit(editBuilder => {
@@ -63,6 +46,13 @@ function activate(context) {
     });
 
     context.subscriptions.push(disposable);
+}
+
+function adjustIndentation(textEditor, text) {
+    const currentIndent = textEditor.document.lineAt(textEditor.selection.active.line).text.match(/^\s*/)[0];
+    return text.split('\n').map((line, index) => 
+        index === 0 ? line.trimLeft() : currentIndent + line.trimLeft()
+    ).join('\n');
 }
 
 /**
