@@ -1,13 +1,13 @@
 {
     "name": "magic-clipboard",
-    "publisher": "36wish",  
+    "publisher": "36wish",
     "repository": {
         "type": "git",
         "url": "https://github.com/36wish/magic-clipboard"
     },
     "displayName": "Magic Clipboard: Regex replace and paste",
     "description": "Modifies pasted text based on regex patterns",
-    "version": "0.2.5",
+    "version": "0.2.6",
     "icon": "icon1.png",
     "engines": {
         "vscode": "^1.75.0"
