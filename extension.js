@@ -4,7 +4,7 @@ let magicClipboardDebug = vscode.window.createOutputChannel("Magic Clipboard");
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-    let disposable = vscode.commands.registerTextEditorCommand('extension.magicClipboard', async (textEditor, edit) => {
+    let disposable = vscode.commands.registerTextEditorCommand('extension.magicClipboard', async (textEditor) => {
         const config = vscode.workspace.getConfiguration('magicClipboard');
         if (config.debug)
             magicClipboardDebug.show();
